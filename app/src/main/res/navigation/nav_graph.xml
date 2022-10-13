@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/animeListFragment">
+
+    <fragment
+        android:id="@+id/myAnimeListFragment"
+        android:name="com.example.watchlist.ui.myAnimeList.MyAnimeListFragment"
+        android:label="fragment_anime_list"
+        tools:layout="@layout/fragment_my_anime_list">
+        <action
+            android:id="@+id/action_myAnimeListFragment_to_animeFragment"
+            app:destination="@id/animeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animeListFragment"
+        android:name="com.example.watchlist.ui.animeList.AnimeListFragment"
+        android:label="fragment_anime"
+        tools:layout="@layout/fragment_anime_list">
+        <action
+            android:id="@+id/action_animeListFragment_to_animeFragment"
+            app:destination="@id/animeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchAnimeFragment"
+        android:name="com.example.watchlist.ui.searchAnime.SearchAnimeFragment"
+        android:label="fragment_search_anime"
+        tools:layout="@layout/fragment_search_anime">
+        <action
+            android:id="@+id/action_searchAnimeFragment_to_animeFragment"
+            app:destination="@id/animeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animeFragment"
+        android:name="com.example.watchlist.ui.anime.AnimeFragment"
+        android:label="fragment_anime"
+        tools:layout="@layout/fragment_anime" />
+</navigation>
