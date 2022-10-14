@@ -1,8 +1,10 @@
 package com.example.watchlist.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.watchlist.api.apiResponse.Anime
 import com.example.watchlist.api.apiResponse.AnimeResponse
 import com.example.watchlist.repository.AnimeRepo
 import com.example.watchlist.utils.Resource
@@ -15,12 +17,14 @@ class AnimeListViewModel(
 
     val searchAnimeList: MutableLiveData<Resource<AnimeResponse>> = MutableLiveData()
     val animeList: MutableLiveData<Resource<AnimeResponse>> = MutableLiveData()
+    val topAnimeList: MutableLiveData<Resource<AnimeResponse>> = MutableLiveData()
     val pageNumber = 1
-    val limit = 10
+    val limit = 20
 
 
     init {
         getAnimeList()
+        getTopAnimeList()
     }
 
 
@@ -46,6 +50,31 @@ class AnimeListViewModel(
     }
 
     private fun handleAnimeQueryResponse(res: Response<AnimeResponse>): Resource<AnimeResponse> {
+        if (res.isSuccessful) {
+            res.body()?.let { data ->
+                return Resource.Success(data)
+            }
+        }
+        return Resource.Error(res.message())
+    }
+
+    fun saveAnimeInDb(anime: Anime) = viewModelScope.launch {
+        animeRepo.saveAnimeInDB(anime)
+    }
+
+    fun getSavedAnime() = animeRepo.fetchAllSavedAnime()
+
+    fun deleteAnimeFromDb(anime: Anime) = viewModelScope.launch {
+        animeRepo.deleteAnimeFromDB(anime)
+    }
+
+    fun getTopAnimeList() = viewModelScope.launch {
+        topAnimeList.postValue(Resource.Loading())
+        val res = animeRepo.getTopAnimeList()
+        topAnimeList.postValue(handleTopAnimeListResponse(res))
+    }
+
+    private fun handleTopAnimeListResponse(res: Response<AnimeResponse>): Resource<AnimeResponse> {
         if (res.isSuccessful) {
             res.body()?.let { data ->
                 return Resource.Success(data)

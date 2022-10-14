@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="anime_banner">Anime banner</string>
+    <string name="browse_anime">Browse Anime</string>
+    <string name="search_anime">Search Anime</string>
+    <string name="my_anime_list">My Anime List</string>
+    <string name="search_anime_by_title">Search anime by title</string>
 </resources>

@@ -1,7 +1,10 @@
 package com.example.watchlist.api.apiResponse
 
+
+
+
 data class Webp(
-    val image_url: String,
-    val large_image_url: String,
-    val small_image_url: String
-)
+    val image_url: String ?,
+    val large_image_url: String ?,
+    val small_image_url: String ?
+) 

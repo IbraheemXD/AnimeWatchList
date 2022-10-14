@@ -8,6 +8,9 @@ import com.bumptech.glide.Glide
 import com.example.watchlist.R
 import com.example.watchlist.api.apiResponse.Anime
 import com.example.watchlist.databinding.ItemAnimeListBinding
+import java.math.RoundingMode
+import java.text.DecimalFormat
+import kotlin.math.roundToInt
 
 class AnimeListAdapter(
     private val animeList: List<Anime>,
@@ -18,11 +21,12 @@ class AnimeListAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindItem(anime: Anime, view: View) {
-            binding.rvAnimeTitle.text = anime.titles[0].title
-            binding.rvAnimeDiscription.text = anime.synopsis
+            val score = anime.score ?: "N/A"
+            binding.rvAnimeTitle.text = anime.titles!![0].title
+            binding.rvAnimeScore.text = score.toString()
             Glide
                 .with(view)
-                .load(anime.images.jpg.image_url)
+                .load(anime.images!!.jpg!!.image_url)
                 .placeholder(R.drawable.place_holder)
                 .into(binding.rvAnimeBanner)
             binding.rvItemContainer.setOnClickListener {
@@ -30,6 +34,7 @@ class AnimeListAdapter(
             }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(

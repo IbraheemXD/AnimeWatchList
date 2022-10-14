@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -34,6 +36,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
 dependencies {
@@ -63,4 +66,7 @@ dependencies {
     implementation("androidx.room:room-ktx:$room_version")
     implementation "androidx.activity:activity-ktx:$activityVersion"
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+
+    // carousel recyclerview
+    implementation 'com.github.sparrow007:carouselrecyclerview:1.2.5'
 }

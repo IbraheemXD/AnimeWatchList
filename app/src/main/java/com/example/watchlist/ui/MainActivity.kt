@@ -38,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationMenu
             .setupWithNavController(navController)
 
+        setSupportActionBar(binding.toolbar)
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
     }
 
 }

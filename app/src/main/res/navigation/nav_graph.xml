@@ -36,5 +36,9 @@
         android:id="@+id/animeFragment"
         android:name="com.example.watchlist.ui.anime.AnimeFragment"
         android:label="fragment_anime"
-        tools:layout="@layout/fragment_anime" />
+        tools:layout="@layout/fragment_anime" >
+        <argument
+            android:name="anime"
+            app:argType="com.example.watchlist.api.apiResponse.Anime" />
+    </fragment>
 </navigation>

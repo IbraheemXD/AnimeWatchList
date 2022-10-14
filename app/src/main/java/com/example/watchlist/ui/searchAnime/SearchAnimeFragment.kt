@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.watchlist.R
 import com.example.watchlist.adapters.AnimeListAdapter
@@ -38,7 +39,8 @@ class SearchAnimeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as MainActivity).viewModel
+        val activity = (activity as MainActivity)
+        viewModel = activity.viewModel
 
         var job: Job? = null
         binding.etSearchAnime.addTextChangedListener { editable ->
@@ -70,13 +72,24 @@ class SearchAnimeFragment : Fragment() {
                 }
             }
         }
+
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        activity.supportActionBar?.setTitle(R.string.search_anime)
     }
 
-    private fun setRecyclerView(anime: List<Anime>) {
-        val adapter = AnimeListAdapter(anime) {
-            findNavController().navigate(R.id.action_searchAnimeFragment_to_animeFragment)
+    private fun setRecyclerView(animeList: List<Anime>) {
+        val adapter = AnimeListAdapter(animeList) { id ->
+            val index = animeList.indexOfFirst { anime -> anime.mal_id == id }
+            val bundle = Bundle().apply {
+                putSerializable("anime", animeList[index])
+            }
+            findNavController().navigate(
+                R.id.action_searchAnimeFragment_to_animeFragment,
+                bundle
+            )
         }
         binding.rvSearchAnimeList.adapter = adapter
+        binding.rvSearchAnimeList.layoutManager = GridLayoutManager(activity?.applicationContext, 2)
     }
 
 }

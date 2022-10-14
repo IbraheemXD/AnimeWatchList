@@ -12,8 +12,12 @@ interface ApiService {
         @Query("page")
         page : Int = 1,
         @Query("limit")
-        limit : Int = 10
-    ) : Response<AnimeResponse>
+        limit : Int = 10,
+        @Query("order_by")
+        order_by: String = "score",
+        @Query("sort")
+        sort: String = "desc",
+        ) : Response<AnimeResponse>
 
     @GET("v4/anime")
     suspend fun queryAnime(
@@ -21,4 +25,6 @@ interface ApiService {
         q : String
     ) : Response<AnimeResponse>
 
+    @GET("v4/top/anime")
+    suspend fun getTopAnimeList() : Response<AnimeResponse>
 }
