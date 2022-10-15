@@ -69,4 +69,7 @@ dependencies {
 
     // carousel recyclerview
     implementation 'com.github.sparrow007:carouselrecyclerview:1.2.5'
+    // android youtube player
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.1.0'
+
 }

@@ -12,7 +12,7 @@
         android:id="@+id/rvCarouselImage"
         android:layout_width="150dp"
         android:layout_height="280dp"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         tools:src="@drawable/anime_tem_banner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

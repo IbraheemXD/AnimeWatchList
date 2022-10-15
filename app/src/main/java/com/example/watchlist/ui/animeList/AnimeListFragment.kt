@@ -12,11 +12,10 @@ import com.example.watchlist.R
 import com.example.watchlist.adapters.AnimeListAdapter
 import com.example.watchlist.adapters.CarouselViewAdapter
 import com.example.watchlist.api.apiResponse.Anime
-import com.example.watchlist.databinding.FragmentAnimeListBinding
 import com.example.watchlist.ui.AnimeListViewModel
 import com.example.watchlist.ui.MainActivity
 import com.example.watchlist.utils.Resource
-import java.io.Serializable
+import com.example.watchlist.databinding.FragmentAnimeListBinding
 
 class AnimeListFragment : Fragment() {
     private lateinit var binding: FragmentAnimeListBinding

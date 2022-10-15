@@ -29,7 +29,6 @@
             app:menu="@menu/bottom_navigation_menu"
             android:background="@drawable/bottom_navigation_bg"
             android:elevation="20dp"
-            android:layout_margin="10dp"
             app:labelVisibilityMode="unlabeled"
             />
 

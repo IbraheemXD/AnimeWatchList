@@ -12,4 +12,5 @@
     <color name="skyBlue">#a8dadc</color>
     <color name="blue">#457b9d</color>
     <color name="darkBlue">#1d3557</color>
+    <color name="lightGrey">#cccccc</color>
 </resources>
